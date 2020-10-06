@@ -13,9 +13,9 @@
             <Setter Property="Control.Margin" Value="5,10,0,20"/>
         </Style>
 
-        <Style TargetType="TextBox">
+        <!--<Style TargetType="TextBox">
             <Setter Property="Margin" Value="3,3,3,3"/>
-        </Style>
+        </Style>-->
 
         <Style x:Key="WindowsStyle" TargetType="Window">
             <Setter Property="Background" Value="Azure"/>
@@ -37,7 +37,25 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
-        
+
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="3,3,3,3"/>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="GotFocus">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation To="20" Duration="0:0:0.6" Storyboard.TargetProperty="FontSize"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="LostFocus">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation To="12" Duration="0:0:0.6" Storyboard.TargetProperty="FontSize"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
     </Application.Resources>
 </Application>
